@@ -1,6 +1,5 @@
-package com.user.evaluation.controllers;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.user.evaluation.Application;
 import com.user.evaluation.dto.UserEvaluationModel;
 import com.user.evaluation.dto.UserModel;
 import com.user.evaluation.enums.MonthEnum;
@@ -21,7 +20,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @Testcontainers
-@SpringBootTest
+@SpringBootTest(classes = Application.class)
 @AutoConfigureMockMvc
 public class EvaluationControllerTest {
     @Autowired
