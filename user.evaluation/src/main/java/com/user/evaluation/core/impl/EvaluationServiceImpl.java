@@ -2,7 +2,7 @@ package com.user.evaluation.core.impl;
 
 import com.user.evaluation.core.EvaluationService;
 import com.user.evaluation.dto.UserEvaluationModel;
-import com.user.evaluation.dto.UserModel;
+import com.user.evaluation.mappers.UserEvaluationMapper;
 import com.user.evaluation.persistence.EvaluationEntity;
 import com.user.evaluation.persistence.repositories.EvaluationRepository;
 import com.user.evaluation.persistence.repositories.UserRepository;
@@ -16,6 +16,7 @@ import java.util.List;
 public class EvaluationServiceImpl implements EvaluationService {
 
     private final UserRepository userRepository;
+    private final UserEvaluationMapper userEvaluationMapper;
     private final EvaluationRepository evaluationRepository;
 
     @Override
@@ -31,17 +32,7 @@ public class EvaluationServiceImpl implements EvaluationService {
 
     @Override
     public UserEvaluationModel get(Long id) {
-        return map(evaluationRepository.getByUserId(id));
-    }
-
-    private UserEvaluationModel map(EvaluationEntity evaluation) {
-        UserEvaluationModel model = new UserEvaluationModel();
-        model.setEvaluationComment(evaluation.getEvaluationComment());
-        model.setMonth(evaluation.getMonth());
-        model.setEvaluationId(evaluation.getId());
-        model.setUserModel(new UserModel());
-
-        return model;
+        return userEvaluationMapper.map(evaluationRepository.getByUserId(id));
     }
 
     @Override
@@ -52,7 +43,7 @@ public class EvaluationServiceImpl implements EvaluationService {
     @Override
     public List<UserEvaluationModel> getAll() {
         return evaluationRepository.findAll().stream()
-                .map(this::map)
+                .map(userEvaluationMapper::map)
                 .toList();
     }
 }

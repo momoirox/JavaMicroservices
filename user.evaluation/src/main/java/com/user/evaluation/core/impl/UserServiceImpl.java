@@ -3,6 +3,8 @@ package com.user.evaluation.core.impl;
 import com.user.evaluation.core.UserService;
 import com.user.evaluation.dto.UserEvaluationModel;
 import com.user.evaluation.dto.UserModel;
+import com.user.evaluation.mappers.UserEvaluationMapper;
+import com.user.evaluation.mappers.UserMapper;
 import com.user.evaluation.persistence.EvaluationEntity;
 import com.user.evaluation.persistence.UserEntity;
 import com.user.evaluation.persistence.repositories.EvaluationRepository;
@@ -16,7 +18,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
+    private final UserMapper userMapper;
     private final UserRepository userRepository;
+    private final UserEvaluationMapper userEvaluationMapper;
     private final EvaluationRepository evaluationRepository;
 
 
@@ -24,7 +28,7 @@ public class UserServiceImpl implements UserService {
     public List<UserModel> getAll() {
         List<UserEntity> all = userRepository.findAll();
         return all.stream()
-                .map(this::map)
+                .map(userMapper::map)
                 .toList();
     }
 
@@ -37,31 +41,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserModel get(Long id) {
-        return map(userRepository.getReferenceById(id));
+        return userMapper.map(userRepository.getReferenceById(id));
     }
 
     @Override
     public UserEvaluationModel getEvaluations(Long id) {
-        UserEntity user = userRepository.getReferenceById(id);
         EvaluationEntity evaluation = evaluationRepository.getByUserId(id);
-
-        UserEvaluationModel response = new UserEvaluationModel();
-        response.setUserModel(map(user));
-        response.setEvaluationId(evaluation.getId());
-        response.setEvaluationComment(evaluation.getEvaluationComment());
-        response.setMonth(evaluation.getMonth());
-
-        return response;
-    }
-
-    private UserModel map(UserEntity user) {
-        UserModel request = new UserModel();
-        request.setId(user.getId());
-        request.setFirstName(user.getFirstName());
-        request.setLastName(user.getLastName());
-        request.setJobDescription(user.getJobDescription());
-
-        return request;
+        return userEvaluationMapper.map(evaluation);
     }
 
     private UserEntity map(UserModel request) {
