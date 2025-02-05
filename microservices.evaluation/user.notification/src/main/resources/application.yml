@@ -1,0 +1,6 @@
+email:
+  server:
+    host: ${EMAIL_SERVER_HOST}
+    port: ${EMAIL_SERVER_PORT}
+  username: ${EMAIL_USERNAME}
+  password: ${EMAIL_PASSWORD}

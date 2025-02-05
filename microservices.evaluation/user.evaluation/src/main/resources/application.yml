@@ -1,4 +1,16 @@
 spring:
-  jpa:
-    hibernate:
-      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://localhost:5432/evaluationsdb
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      idle-timeout: 30000
+      pool-name: HikariCP
+
+jpa:
+  hibernate:
+    ddl-auto: update
+    dialect: org.hibernate.dialect.PostgreSQLDialect
