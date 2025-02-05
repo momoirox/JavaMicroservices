@@ -1,0 +1,66 @@
+services:
+  user-evaluation:
+    build: ./user.evaluation
+    container_name: user-evaluation
+    depends_on:
+      - db-evaluation
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db-evaluation:5432/evaluationsDb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    ports:
+      - "8080:8080"
+
+  user-management:
+    build: ./user.management
+    container_name: user-management
+    depends_on:
+      - db-management
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db-management:5432/managementDb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    ports:
+      - "8081:8081"
+
+  user-notification:
+    build: ./user.notification
+    container_name: user-notification
+    depends_on:
+      - user-evaluation
+      - user-management
+    environment:
+      EMAIL_SERVER_HOST: smtp.example.com
+      EMAIL_SERVER_PORT: 587
+      EMAIL_USERNAME: example@example.com
+      EMAIL_PASSWORD: password
+    ports:
+      - "8082:8082"
+
+  db-evaluation:
+    image: postgres:14
+    container_name: postgres-evaluation
+    environment:
+      POSTGRES_DB: evaluationsDb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_evaluation_data:/var/lib/postgresql/data
+
+  db-management:
+    image: postgres:14
+    container_name: postgres-management
+    environment:
+      POSTGRES_DB: managementDb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres_management_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_evaluation_data:
+  postgres_management_data:
