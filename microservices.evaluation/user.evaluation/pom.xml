@@ -7,7 +7,6 @@
         <groupId>microservices.evaluation</groupId>
         <artifactId>microservices.evaluation</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>user.evaluation</artifactId>
