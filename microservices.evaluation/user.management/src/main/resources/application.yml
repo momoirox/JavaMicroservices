@@ -1,10 +1,8 @@
 server:
-  port: 8080
-services:
-  user-management: "http://localhost:8082/api/managements/users/"
+  port: 8082
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/evaluationsdb
+    url: jdbc:postgresql://localhost:5432/managementdb
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver

@@ -1,4 +1,4 @@
-package com.user.evaluation.dto;
+package com.user.management.model;
 
 import lombok.*;
 

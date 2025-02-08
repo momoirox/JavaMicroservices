@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class EvaluationEntity {
-    @jakarta.persistence.Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long Id;
 
@@ -18,7 +18,5 @@ public class EvaluationEntity {
     @Enumerated(EnumType.STRING)
     MonthEnum month;
 
-    @ManyToOne
-    UserEntity user;
-
+    Long refUser;
 }

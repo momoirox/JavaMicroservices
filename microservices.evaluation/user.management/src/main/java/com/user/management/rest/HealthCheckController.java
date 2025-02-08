@@ -1,4 +1,4 @@
-package com.user.management;
+package com.user.management.rest;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

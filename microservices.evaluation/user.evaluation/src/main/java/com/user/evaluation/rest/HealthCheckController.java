@@ -1,10 +1,12 @@
-package com.user.evaluation.controllers;
+package com.user.evaluation.rest;
 
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/api/evaluations/health")
+@RestController
+@RequestMapping("/api/evaluations/health")
 public class HealthCheckController {
 
     @GetMapping

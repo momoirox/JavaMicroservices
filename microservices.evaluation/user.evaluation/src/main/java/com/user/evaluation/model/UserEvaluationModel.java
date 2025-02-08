@@ -1,4 +1,4 @@
-package com.user.evaluation.dto;
+package com.user.evaluation.model;
 
 import com.user.evaluation.enums.MonthEnum;
 import lombok.*;

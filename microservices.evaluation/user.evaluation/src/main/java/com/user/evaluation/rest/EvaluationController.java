@@ -1,7 +1,7 @@
-package com.user.evaluation.controllers;
+package com.user.evaluation.rest;
 
 import com.user.evaluation.core.EvaluationService;
-import com.user.evaluation.dto.UserEvaluationModel;
+import com.user.evaluation.model.UserEvaluationModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,5 +33,4 @@ public class EvaluationController {
     public void delete(@PathVariable Long id) {
         evaluationService.delete(id);
     }
-
 }

@@ -132,6 +132,12 @@
                 <artifactId>spring-boot-starter-mail</artifactId>
                 <version>3.4.0</version>
             </dependency>
+            <!-- Spring web flux for synch communication -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-webflux</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>
