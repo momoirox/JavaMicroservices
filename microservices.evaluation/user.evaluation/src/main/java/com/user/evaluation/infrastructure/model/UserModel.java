@@ -1,4 +1,4 @@
-package com.user.management.model;
+package com.user.evaluation.infrastructure.model;
 
 import lombok.*;
 
@@ -9,6 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 public class UserModel {
     private Long id;
+    private String email;
     private String firstName;
     private String lastName;
     private String jobDescription;

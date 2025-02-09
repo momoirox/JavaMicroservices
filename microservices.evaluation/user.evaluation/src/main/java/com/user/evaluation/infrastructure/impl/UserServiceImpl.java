@@ -1,7 +1,7 @@
-package com.user.evaluation.core.impl;
+package com.user.evaluation.infrastructure.impl;
 
-import com.user.evaluation.core.UserService;
-import com.user.evaluation.model.UserModel;
+import com.user.evaluation.infrastructure.UserService;
+import com.user.evaluation.infrastructure.model.UserModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,6 @@ public class UserServiceImpl implements UserService {
 
     @Value("${services.user-management}")
     private String userManagementServiceUrl;
-
 
     @Override
     public UserModel get(Long userId) {

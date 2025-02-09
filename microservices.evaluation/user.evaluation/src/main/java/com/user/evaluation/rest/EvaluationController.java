@@ -1,7 +1,7 @@
 package com.user.evaluation.rest;
 
 import com.user.evaluation.core.EvaluationService;
-import com.user.evaluation.model.UserEvaluationModel;
+import com.user.evaluation.core.model.UserEvaluationModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

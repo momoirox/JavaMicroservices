@@ -1,6 +1,6 @@
 package com.user.evaluation.persistence;
 
-import com.user.evaluation.enums.MonthEnum;
+import com.user.evaluation.core.enums.MonthEnum;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

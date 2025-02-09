@@ -1,4 +1,4 @@
-package com.user.evaluation.config;
+package com.user.evaluation.infrastructure;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

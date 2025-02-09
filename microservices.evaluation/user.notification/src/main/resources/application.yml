@@ -1,6 +1,14 @@
-email:
-  server:
-    host: ${EMAIL_SERVER_HOST}
-    port: ${EMAIL_SERVER_PORT}
-  username: ${EMAIL_USERNAME}
-  password: ${EMAIL_PASSWORD}
+spring:
+  mail:
+    host: sandbox.smtp.mailtrap.io
+    port: 2525
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    protocol: smtp
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: notificationService
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+

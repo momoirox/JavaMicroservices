@@ -1,6 +1,6 @@
-package com.user.evaluation.mappers;
+package com.user.evaluation.core.mappers;
 
-import com.user.evaluation.model.UserEvaluationModel;
+import com.user.evaluation.core.model.UserEvaluationModel;
 import com.user.evaluation.persistence.EvaluationEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

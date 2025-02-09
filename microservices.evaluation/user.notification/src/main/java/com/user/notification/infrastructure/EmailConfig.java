@@ -1,4 +1,4 @@
-package com.user.notification;
+package com.user.notification.infrastructure;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -10,16 +10,16 @@ import java.util.Properties;
 
 @Configuration
 public class EmailConfig {
-    @Value("${email.server.host}")
+    @Value("${spring.mail.host}")
     private String emailHost;
 
-    @Value("${email.server.port}")
+    @Value("${spring.mail.port}")
     private int emailPort;
 
-    @Value("${email.username}")
+    @Value("${spring.mail.username}")
     private String emailUsername;
 
-    @Value("${email.password}")
+    @Value("${spring.mail.password}")
     private String emailPassword;
 
     @Bean

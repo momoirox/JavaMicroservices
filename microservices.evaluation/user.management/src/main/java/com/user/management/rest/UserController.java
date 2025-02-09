@@ -1,7 +1,7 @@
 package com.user.management.rest;
 
 import com.user.management.core.UserService;
-import com.user.management.model.UserModel;
+import com.user.management.core.model.UserModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

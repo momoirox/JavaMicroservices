@@ -1,7 +1,7 @@
 package com.user.management.core;
 
 
-import com.user.management.model.UserModel;
+import com.user.management.core.model.UserModel;
 
 import java.util.List;
 

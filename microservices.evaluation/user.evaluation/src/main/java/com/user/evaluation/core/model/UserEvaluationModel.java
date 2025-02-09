@@ -1,6 +1,7 @@
-package com.user.evaluation.model;
+package com.user.evaluation.core.model;
 
-import com.user.evaluation.enums.MonthEnum;
+import com.user.evaluation.core.enums.MonthEnum;
+import com.user.evaluation.infrastructure.model.UserModel;
 import lombok.*;
 
 @Getter

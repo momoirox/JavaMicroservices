@@ -1,6 +1,6 @@
 package com.user.evaluation.core;
 
-import com.user.evaluation.model.UserEvaluationModel;
+import com.user.evaluation.core.model.UserEvaluationModel;
 
 import java.util.List;
 

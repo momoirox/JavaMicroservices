@@ -1,10 +1,11 @@
 package com.user.evaluation.core.impl;
 
+import com.user.evaluation.infrastructure.NotificationService;
 import com.user.evaluation.core.EvaluationService;
-import com.user.evaluation.core.UserService;
-import com.user.evaluation.mappers.UserEvaluationMapper;
-import com.user.evaluation.model.UserEvaluationModel;
-import com.user.evaluation.model.UserModel;
+import com.user.evaluation.infrastructure.UserService;
+import com.user.evaluation.core.mappers.UserEvaluationMapper;
+import com.user.evaluation.core.model.UserEvaluationModel;
+import com.user.evaluation.infrastructure.model.UserModel;
 import com.user.evaluation.persistence.EvaluationEntity;
 import com.user.evaluation.persistence.repositories.EvaluationRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,19 +17,22 @@ import java.util.List;
 @RequiredArgsConstructor
 public class EvaluationServiceImpl implements EvaluationService {
     private final UserService userService;
+    private final NotificationService notificationService;
     private final UserEvaluationMapper userEvaluationMapper;
     private final EvaluationRepository evaluationRepository;
 
     @Override
     public UserEvaluationModel save(UserEvaluationModel model) {
+        Long userId = model.getUserModel().getId();
         EvaluationEntity evaluation = new EvaluationEntity();
         evaluation.setEvaluationComment(model.getEvaluationComment());
         evaluation.setMonth(model.getMonth());
-
-        UserModel userModel = userService.get(model.getUserModel().getId());
-        evaluation.setRefUser(userModel.getId());
+        evaluation.setRefUser(userId);
 
         evaluationRepository.save(evaluation);
+
+        UserModel userModel = userService.get(userId);
+        notificationService.notify(userModel.getEmail());
 
         model.setEvaluationId(evaluation.getId());
         return model;
